@@ -1,3 +1,8 @@
+function init() {
+    let data = getCities()
+    data.then(processData)
+}
+
 async function getCities() {
   let response = await fetch(`/5.php`)
   let data = await response.json()
@@ -15,20 +20,15 @@ function processData(data) {
     }
 }
 
-function showNoCity() {
-    document.getElementById('city').innerHTML = `Hmm. It doesn’t appear to be 5 o’clock anywhere right now.`
-}
-
 function showCity(cities) {
     let city = cities[Math.floor(Math.random() * cities.length)]
     let url = `https://www.google.com/maps/search/${city.replace(' ', '+')}/`
-    let link = `<p><a href="${url}">${city}</a></p>`
+    let link = `in <a href="${url}">${city}</a>.`
     document.getElementById('city').innerHTML = link
 }
 
-function init() {
-    let data = getCities()
-    data.then(processData)
+function showNoCity() {
+    document.getElementById('city').innerHTML = `nowhere? Is that possible?`
 }
 
 document.addEventListener('DOMContentLoaded', init)
