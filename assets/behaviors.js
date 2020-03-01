@@ -1,6 +1,25 @@
 function init() {
-    let data = getCities()
-    data.then(processData)
+    setTimeout(backspace, 1500)
+    window.requestAnimationFrame(() => {
+       let data = getCities()
+       data.then(processData)
+    })
+}
+
+function typingJitter() {
+    return Math.floor(Math.random() * (192 - 64 + 1)) + 64
+}
+
+function backspace() {
+    let city = document.getElementById('city')
+    function back() {
+        let txt = city.innerHTML
+        if (city.innerHTML.length > 0) {
+           city.innerHTML = txt.slice(0, txt.length - 1)
+           setTimeout(back, typingJitter())
+        }
+    }
+    back()
 }
 
 async function getCities() {
@@ -12,12 +31,27 @@ async function getCities() {
 function processData(data) {
     let { cities } = data
 
-    if (cities.length > 0) {
-       showCity(cities)
+    let city = document.getElementById('city')
+
+    function waiting() {
+        if (city.innerHTML.length > 0) {
+            setTimeout(waiting, 32)
+        }
+        else {
+            showing()
+        }
     }
-    else {
-        showNoCity()
+
+    function showing() {
+        if (cities.length > 0) {
+           showCity(cities)
+        }
+        else {
+            showNoCity()
+        }
     }
+
+    waiting()
 }
 
 function showCity(cities) {
