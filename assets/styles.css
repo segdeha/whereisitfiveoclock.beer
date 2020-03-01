@@ -1,3 +1,42 @@
+body {
+    background-color: black;
+    color: white;
+    font: 16px/1.5 Helvetica, Sans-Serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+#where {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+a {
+    color: #e7e7e7;
+    text-decoration: none;
+}
+    a:hover {
+        border-bottom: solid 1px white;
+        color: white;
+    }
+
+#webgl-trademark {
+    bottom: 10px;
+    position: absolute;
+    right: 10px;
+}
+
+.webgl-error {
+    color: white;
+    font-family: monospace;
+    margin: 50px;
+    text-align: center;
+}
+
 #cursor {
     animation: blink 1s step-end infinite;
     display: inline-block;

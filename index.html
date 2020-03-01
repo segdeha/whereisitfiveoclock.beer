@@ -5,10 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Where is it 5 o’clock?</title>
         <link rel="stylesheet" href="assets/styles.css">
+        <script defer src="assets/three.min.js"></script>
+        <script defer src="assets/Detector.js"></script>
+        <script defer src="assets/TrackballControls.js"></script>
+        <script defer src="assets/earth.js"></script>
         <script defer src="assets/behaviors.js"></script>
     </head>
     <body>
-        <h1>It’s 5 o’clock <span id="city">somewhere…</span><span id="cursor"></span></h1>
-        <p><button>Where else?</button></p>
+        <!-- globe animation courtesy of https://github.com/turban/webgl-earth -->
+        <div id="webgl"></div>
+        <div id="where">
+            <h1>It’s 5 o’clock <span id="city">somewhere…</span><span id="cursor"></span></h1>
+            <p><button>Where else?</button></p>
+        </div>
+        <div id="webgl-trademark">
+            <a href="http://thematicmapping.org/">
+                <img src="http://earthatlas.info/img/thematicmapping.png">
+            </a>
+        </div>
     </body>
 </html>
