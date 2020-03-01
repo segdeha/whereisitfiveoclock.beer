@@ -6,6 +6,6 @@
 }
 
 @keyframes blink {
-  from, to { background-color: transparent }
-  50% { background-color: black }
+    from, to { background-color: transparent }
+    50% { background-color: black }
 }
