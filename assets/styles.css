@@ -7,16 +7,16 @@ body {
 }
 
 #where {
-    bottom: 0;
-    left: 0;
+    bottom: 2vh;
+    left: 2vh;
     position: absolute;
-    right: 0;
+    right: 2vh;
     text-align: center;
-    top: 0;
+    top: 2vh;
 }
 
 h1, p {
-    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -66,8 +66,8 @@ button {
         }
 
 #credits {
-    bottom: 10px;
-    left: 10px;
+    bottom: 2vh;
+    left: 2vh;
     position: absolute;
 }
     #credits p {
@@ -76,9 +76,9 @@ button {
     }
 
 #webgl-trademark {
-    bottom: 10px;
+    bottom: 2vh;
     position: absolute;
-    right: 10px;
+    right: 2vh;
 }
 
 .webgl-error {
