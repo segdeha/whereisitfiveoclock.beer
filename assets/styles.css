@@ -24,6 +24,12 @@ a {
         color: white;
     }
 
+#credits {
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+}
+
 #webgl-trademark {
     bottom: 10px;
     position: absolute;
