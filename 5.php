@@ -9,10 +9,7 @@ General algorithm:
 
 */
 
-define('DBSERVER', 'db74a.pair.com');
-define('USERNAME', 'segdeha_26_r');
-define('PASSWORD', 'iTxsYbd7');
-define('DATABASE', 'segdeha_timezones');
+require '/usr/home/segdeha/apps/whereisitfiveoclock.beer/dbsettings.php';
 
 // location of cached response
 define('FILENAME', '_cache.json');
