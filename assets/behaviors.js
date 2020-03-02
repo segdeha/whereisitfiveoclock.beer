@@ -1,3 +1,9 @@
+/**
+ * None of what’s in here is rocket science. Heck, it’s barely computer science, but I’d
+ * appreciate it if you let me know if you use any of it or learned something from it.
+ * Email me at: andrew@hedges.name
+ */
+
 let TYPING_SPEED_FAST = 'fast'
 
 function init() {
@@ -99,6 +105,8 @@ function processData(data) {
  * Simulate typing
  * @param el Node Element into which the typing will happen
  * @param str String String being typed
+ * @param speed String Speed at which to type ('slow' | 'fast')
+ * @param period Boolean Whether or not to add a period to the end of the string
  */
 function typeString(el, str, speed = 'slow', period = false) {
     let chars = str.split('')
