@@ -100,12 +100,20 @@ function processData(data) {
  * @param el Node Element into which the typing will happen
  * @param str String String being typed
  */
-function typeString(el, str, speed = 'slow') {
+function typeString(el, str, speed = 'slow', period = false) {
     let chars = str.split('')
     function type() {
         el.innerHTML = el.innerHTML + chars.shift()
         if (chars.length > 0) {
             setTimeout(type, typingJitter(speed))
+        }
+        else if (period) {
+            if ('A' === el.tagName) {
+               el.parentNode.innerHTML = el.parentNode.innerHTML + '.'
+            }
+            else {
+               el.innerHTML = el.innerHTML + '.'
+            }
         }
     }
     type()
@@ -118,7 +126,7 @@ function showCity(cities) {
     typeString(city, 'in ', TYPING_SPEED_FAST)
     setTimeout(() => {
         city.innerHTML = city.innerHTML + `<a href="${url}" target="_blank"></a>`
-        typeString(city.querySelector('a'), loc)
+        typeString(city.querySelector('a'), loc, 'slow', true)
     }, 64 * 3) // wait max possible typing jitter (fast)
 }
 
