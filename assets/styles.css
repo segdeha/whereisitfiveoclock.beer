@@ -16,7 +16,7 @@ body {
 }
 
 a {
-    color: #e7e7e7;
+    color: #ddd;
     text-decoration: none;
 }
     a:hover {
@@ -62,6 +62,10 @@ button {
     left: 10px;
     position: absolute;
 }
+    #credits p {
+       margin-left: 1.25rem;
+       margin-top: 0;
+    }
 
 #webgl-trademark {
     bottom: 10px;
