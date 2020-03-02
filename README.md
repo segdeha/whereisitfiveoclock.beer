@@ -16,4 +16,4 @@ Next, I query a database I put together consisting of 2 tables, one containing 2
 
 Finally, I cache the JSON response I send back to the browser so it’s regenerated at most once per hour.
 
-It works! ¯\_(ツ)_/¯
+It works! ¯\\\_(ツ)_/¯
