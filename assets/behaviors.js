@@ -60,9 +60,10 @@ function backspace() {
 }
 
 async function getCities() {
-  let response = await fetch(`/5.php`)
-  let data = await response.json()
-  return data
+    let buster = Math.floor(+new Date() / 100000)
+    let response = await fetch(`/5.php?${buster}`)
+    let data = await response.json()
+    return data
 }
 
 function processData(data) {
