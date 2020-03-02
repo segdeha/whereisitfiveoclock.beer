@@ -6,7 +6,7 @@ If you dig it, consider tossing some 🍺💰 my way: [venmo.com/segdeha](https:
 
 ## colophon
 
-It was weirdly hard to answer the question, “where is it currently 5 o’clock?” I ended up cobbling together a solution using a couple of data sources and a bit of scripting.
+It was weirdly hard to answer the question, “where is it currently 5 o’clock?” I ended up cobbling together a solution using a couple of different data sources and a bit of scripting.
 
 I start by calling the `GET /list-time-zone` [endpoint](https://timezonedb.com/references/list-time-zone) on TimeZoneDB.com to get the current time in each time zone around the world.
 
