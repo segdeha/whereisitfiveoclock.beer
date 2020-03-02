@@ -36,15 +36,3 @@ a {
     margin: 50px;
     text-align: center;
 }
-
-#cursor {
-    animation: blink 1s step-end infinite;
-    display: inline-block;
-    height: 1.5rem;
-    width: 1rem;
-}
-
-@keyframes blink {
-    from, to { background-color: transparent }
-    50% { background-color: black }
-}
