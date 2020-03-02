@@ -1,0 +1,14 @@
+<IfModule mod_headers.c>
+  # YEAR
+  <FilesMatch "\.(ico|gif|jpg|jpeg|png)$">
+    Header set Cache-Control "max-age=29030400"
+  </FilesMatch>
+  # 45 MIN
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "max-age=2700"
+  </FilesMatch>
+  # 5 MIN
+  <FilesMatch "\.(php)$">
+    Header set Cache-Control "max-age=300"
+  </FilesMatch>
+</IfModule>
