@@ -116,7 +116,7 @@ function showCity(cities) {
     let url = `https://www.google.com/maps/search/${loc.replace(' ', '+')}/`
     typeString(city, 'in ', TYPING_SPEED_FAST)
     setTimeout(() => {
-        city.innerHTML = city.innerHTML + `<a href="${url}"></a>`
+        city.innerHTML = city.innerHTML + `<a href="${url}" target="_blank"></a>`
         typeString(city.querySelector('a'), loc)
     }, 64 * 3) // wait max possible typing jitter (fast)
 }
