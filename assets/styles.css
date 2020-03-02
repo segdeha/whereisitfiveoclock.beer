@@ -1,7 +1,7 @@
 body {
     background-color: black;
     color: white;
-    font: 2vh/1.25 "Maiden Orange", "Helvetica Neue", Sans-Serif;
+    font: 2vw/1.25 "Maiden Orange", "Helvetica Neue", Sans-Serif;
     margin: 0;
     overflow: hidden;
 }
@@ -16,11 +16,7 @@ body {
 }
 
 h1, p {
-    text-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.5);
-}
-
-h1 {
-    font-size: 10vh;
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -35,17 +31,18 @@ a {
 button {
     background: #0688fa;
     border: none;
-    border-radius: 1vh;
-    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
     color: white;
     cursor: pointer;
     display: inline-block;
-    font: 4vh/2 "Helvetica Neue", Sans-Serif;
-    height: 12vh;
+    font-size: 1.5rem;
+    font-family: "Helvetica Neue", Sans-Serif;
+    height: 5rem;
     overflow: hidden;
-    padding: 0 4vw;
+    padding: 0 2.5rem;
     position: relative;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    text-shadow: 0 0.1rem 0 rgba(0,0,0,0.5);
 }
     button[disabled] {
         background: gray;
@@ -71,7 +68,7 @@ button {
     position: absolute;
 }
     #credits p {
-       margin-left: 2rem;
+       margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
        margin-top: 0;
     }
 
