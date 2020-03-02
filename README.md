@@ -12,7 +12,7 @@ I start by calling the `GET /list-time-zone` [endpoint](https://timezonedb.com/r
 
 I then loop through the results and pull out each time zone (`America/Los_Angeles`, `Europe/Andorra`, `Antarctica/McMurdo`, etc.) where the current hour is 17 (i.e. 5pm).
 
-Next, I query a simple database consisting of 2 tables, one containing 24,297 cities, the other that’s used to look up country names from country codes, the data for both coming from [geonames.org](http://download.geonames.org/export/dump/).
+Next, I query a simple database consisting of 2 tables, one containing 24,297 cities with their associated time zones, the other that’s used to look up country names from country codes, the data for both coming from [geonames.org](http://download.geonames.org/export/dump/).
 
 Finally, I cache the JSON response I send back to the browser so it’s regenerated at most once per hour.
 
