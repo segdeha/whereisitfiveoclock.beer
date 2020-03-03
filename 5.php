@@ -36,7 +36,7 @@ else {
 
 if ($curl) {
     // get current times around the world
-    $ch = curl_init('http://api.timezonedb.com/v2.1/list-time-zone?key=L5GJ41WXF03G&format=json');
+    $ch = curl_init('http://api.timezonedb.com/v2.1/list-time-zone?key=' . TIMEZONEDB_API_KEY . '&format=json');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
     $response = curl_exec($ch);
