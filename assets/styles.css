@@ -1,7 +1,9 @@
 body {
     background-color: black;
     color: white;
-    font: 2vw/1.25 "Maiden Orange", "Helvetica Neue", Sans-Serif;
+    font-family: "Maiden Orange", "Helvetica Neue", Sans-Serif;
+    font-size: calc(16px + 1.5vw);
+    line-height: 1.25;
     margin: 0;
     overflow: hidden;
 }
@@ -38,11 +40,11 @@ button {
     display: inline-block;
     font-size: 1.5rem;
     font-family: "Helvetica Neue", Sans-Serif;
-    height: 5rem;
+    height: 4rem;
     overflow: hidden;
-    padding: 0 2.5rem;
+    padding: 0 2rem;
     position: relative;
-    text-shadow: 0 0.1rem 0 rgba(0,0,0,0.5);
+    text-shadow: 0 0.15rem 0 rgba(0,0,0,0.5);
 }
     button[disabled] {
         background: gray;
