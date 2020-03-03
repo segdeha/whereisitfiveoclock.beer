@@ -68,8 +68,8 @@ button {
     position: absolute;
 }
     #credits p {
+       margin: 0;
        margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
-       margin-top: 0;
     }
 
 #webgl-trademark {
