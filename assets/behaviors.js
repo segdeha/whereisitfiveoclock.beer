@@ -127,9 +127,22 @@ function typeString(el, str, speed = 'slow', period = false) {
     type()
 }
 
+// choose a new city, make it different from the last one
+function getRandomCity(cities) {
+    let savedLoc = window.localStorage.getItem('loc')
+    let loc = cities[Math.floor(Math.random() * cities.length)]
+    if (loc && cities.length > 1) {
+        while (loc === savedLoc) {
+            loc = cities[Math.floor(Math.random() * cities.length)]
+        }
+    }
+    window.localStorage.setItem('loc', loc)
+    return loc
+}
+
 function showCity(cities) {
     let city = document.getElementById('city')
-    let loc = cities[Math.floor(Math.random() * cities.length)]
+    let loc = getRandomCity(cities)
     let url = `https://www.google.com/maps/search/${loc.replace(' ', '+')}/`
     typeString(city, 'in ', TYPING_SPEED_FAST)
     setTimeout(() => {
