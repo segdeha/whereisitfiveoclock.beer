@@ -66,9 +66,24 @@ function backspace() {
 }
 
 async function getCities() {
-    let buster = Math.floor(+new Date() / 100000)
-    let response = await fetch(`/5.php?${buster}`)
-    let data = await response.json()
+    let data, expired
+    // get cities from `localStorage`, if possible
+    let cache = window.localStorage.getItem('cache')
+    // if we have a valid cache, inspect it for whether we need to re-fetch
+    try {
+        data = JSON.parse(cache)
+        expired = data.expiry * 1000 < +new Date()
+    }
+    catch (e) {
+        console.warn('Failed to get data from cache or cache is invalid, but maybe that’s nbd?', e)
+    }
+    // if the data hasn't expired, don't even go to the network
+    if ('undefined' === typeof expired || true === expired) {
+        let buster = Math.floor(+new Date() / 60000) // new request to origin every minute
+        let response = await fetch(`/5.php?${buster}`)
+        data = await response.json()
+        window.localStorage.setItem('cache', data)
+    }
     return data
 }
 
