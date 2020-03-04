@@ -82,7 +82,7 @@ async function getCities() {
         let buster = Math.floor(+new Date() / 60000) // new request to origin every minute
         let response = await fetch(`/5.php?${buster}`)
         data = await response.json()
-        window.localStorage.setItem('cache', data)
+        window.localStorage.setItem('cache', JSON.stringify(data))
     }
     return data
 }
