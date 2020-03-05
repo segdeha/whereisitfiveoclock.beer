@@ -22,12 +22,13 @@ h1, p {
 }
 
 a {
-    color: #ddd;
+    color: white;
+    opacity: 0.8;
     text-decoration: none;
 }
     a:hover {
         border-bottom: solid 1px white;
-        color: white;
+        opacity: 1.0;
     }
 
 button {
