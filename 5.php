@@ -81,8 +81,11 @@ if ($curl) {
     $minutes_until_top_of_the_hour = 30 - date('i'); // 30 minutes because india
     $seconds_until_top_of_the_hour = $minutes_until_top_of_the_hour * 60;
 
+    $source = $curl ? 'api' : 'server cache';
+
     $response = array(
         'status' => 'success',
+        'source' => $source,
         'expiry' => time() + $seconds_until_top_of_the_hour,
         'cities' => $cities,
     );

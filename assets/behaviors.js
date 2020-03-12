@@ -104,6 +104,7 @@ async function getCities() {
         let buster = Math.floor(+new Date() / 60000) // new request to origin every minute
         let response = await fetch(`/5.php?${buster}`)
         data = await response.json()
+        data.source = 'local cache'
         window.localStorage.setItem('cache', JSON.stringify(data))
     }
     return data
@@ -111,6 +112,8 @@ async function getCities() {
 
 function processData(data) {
     let { cities } = data
+
+    console.log('source', data.source)
 
     let city = document.getElementById('city')
 
@@ -155,7 +158,7 @@ function typeString(el, str, speed = 'slow', period = false) {
             setTimeout(type, typingJitter(speed))
         }
         else if (period) {
-            if ('A' === el.tagName) {
+            if ('A' === el.tagName && el.parentNode) {
                el.parentNode.innerHTML = el.parentNode.innerHTML + '.'
             }
             else {
