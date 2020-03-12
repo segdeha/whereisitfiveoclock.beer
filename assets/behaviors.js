@@ -5,6 +5,7 @@
  */
 
 let TYPING_SPEED_FAST = 'fast'
+let LOADING_TIMEOUT = undefined
 
 function init() {
     // give the user a second+ to get oriented before erasing the original string
@@ -61,8 +62,29 @@ function backspace() {
            city.innerHTML = txt.slice(0, txt.length - 1)
            setTimeout(back, typingJitter(TYPING_SPEED_FAST))
         }
+        else {
+            showLoading()
+        }
     }
     back()
+}
+
+function showLoading() {
+    const TIMEOUT = 768
+    let city = document.getElementById('city')
+    function addDot() {
+        if (city.innerHTML.length < 3) {
+            city.innerHTML = city.innerHTML + '.'
+            clearTimeout(LOADING_TIMEOUT)
+            LOADING_TIMEOUT = setTimeout(addDot, TIMEOUT)
+        }
+        else {
+            city.innerHTML = ''
+            LOADING_TIMEOUT = setTimeout(addDot, TIMEOUT)
+        }
+    }
+    clearTimeout(LOADING_TIMEOUT)
+    LOADING_TIMEOUT = setTimeout(addDot, TIMEOUT)
 }
 
 async function getCities() {
@@ -105,9 +127,11 @@ function processData(data) {
 
     function showing() {
         if (cities.length > 0) {
+            clearText()
             showCity(cities)
         }
         else {
+            clearText()
             showNoCity()
         }
         toggleButton()
@@ -153,6 +177,12 @@ function getRandomCity(cities) {
     }
     window.localStorage.setItem('loc', loc)
     return loc
+}
+
+function clearText() {
+    clearTimeout(LOADING_TIMEOUT)
+    let city = document.getElementById('city')
+    city.innerHTML = ''
 }
 
 function showCity(cities) {
