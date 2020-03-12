@@ -18,11 +18,11 @@ define('FILENAME', '_cache.json');
 date_default_timezone_set('UTC');
 
 // read cached file
-$json = file_get_contents(FILENAME);
+$cached_json = file_get_contents(FILENAME);
 
 // decide whether we need to get new data
-if ($json) {
-    $obj = json_decode($json);
+if ($cached_json) {
+    $obj = json_decode($cached_json);
 
     // check last updated date/time
     $expiry = $obj->{'expiry'};
@@ -42,11 +42,11 @@ if ($curl) {
     $response = curl_exec($ch);
     curl_close($ch);
     
-    $json = json_decode($response);
+    $fresh_json = json_decode($response);
 
     // loop through results to find time zones where the base time (`date('G', timestamp)`) is 5
     $zones = array();
-    foreach ($json->zones as $zone) {
+    foreach ($fresh_json->zones as $zone) {
         if (17 == date('G', $zone->timestamp)) {
             array_push($zones, $zone->zoneName);
         }
@@ -78,20 +78,20 @@ if ($curl) {
     mysql_close();
 
     // construct JSON that reflects the cities
-    $minutes_until_top_of_the_hour = 30 - date('i'); // 30 minutes because india
-    $seconds_until_top_of_the_hour = $minutes_until_top_of_the_hour * 60;
+    $minutes_until_next_expiry = 30 - date('i'); // 30 minutes because india
+    $seconds_until_next_expiry = $minutes_until_next_expiry * 60;
 
     $api_response = array(
         'status' => 'success',
         'source' => 'api',
-        'expiry' => time() + $seconds_until_top_of_the_hour,
+        'expiry' => time() + $seconds_until_next_expiry,
         'cities' => $cities,
     );
 
     $file_response = array(
         'status' => 'success',
         'source' => 'server cache',
-        'expiry' => time() + $seconds_until_top_of_the_hour,
+        'expiry' => time() + $seconds_until_next_expiry,
         'cities' => $cities,
     );
 
@@ -108,7 +108,7 @@ if ($curl) {
 else {
     // return response
     header('Content-Type: application/json');
-    echo $json;
+    echo $cached_json;
 }
 
 exit;
