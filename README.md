@@ -1,4 +1,4 @@
-# whereisitfiveoclock.beer
+# [whereisitfiveoclock.beer](https://whereisitfiveoclock.beer)
 
 So you never again have to say “It’s 5 o’clock _somewhere…”_
 
