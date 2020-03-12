@@ -94,6 +94,10 @@ async function getCities() {
     // if we have a valid cache, inspect it for whether we need to re-fetch
     try {
         data = JSON.parse(cache)
+
+        // log whether this was a cache hit
+        console.log('source', data.source)
+
         expired = data.expiry * 1000 < +new Date()
     }
     catch (e) {
@@ -101,9 +105,12 @@ async function getCities() {
     }
     // if the data hasn't expired, don't even go to the network
     if ('undefined' === typeof expired || true === expired) {
-        let buster = Math.floor(+new Date() / 60000) // new request to origin every minute
-        let response = await fetch(`/5.php?${buster}`)
+        let response = await fetch(`/5.php`)
         data = await response.json()
+
+        // before we change it, log whether this was a cache hit
+        console.log('source', data.source)
+
         data.source = 'local cache'
         window.localStorage.setItem('cache', JSON.stringify(data))
     }
@@ -112,8 +119,6 @@ async function getCities() {
 
 function processData(data) {
     let { cities } = data
-
-    console.log('source', data.source)
 
     let city = document.getElementById('city')
 

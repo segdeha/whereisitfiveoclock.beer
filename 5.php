@@ -81,23 +81,34 @@ if ($curl) {
     $minutes_until_top_of_the_hour = 30 - date('i'); // 30 minutes because india
     $seconds_until_top_of_the_hour = $minutes_until_top_of_the_hour * 60;
 
-    $source = $curl ? 'api' : 'server cache';
-
-    $response = array(
+    $api_response = array(
         'status' => 'success',
-        'source' => $source,
+        'source' => 'api',
         'expiry' => time() + $seconds_until_top_of_the_hour,
         'cities' => $cities,
     );
 
-    $json = json_encode($response);
+    $file_response = array(
+        'status' => 'success',
+        'source' => 'server cache',
+        'expiry' => time() + $seconds_until_top_of_the_hour,
+        'cities' => $cities,
+    );
+
+    $api_json = json_encode($api_response);
+    $file_json = json_encode($file_response);
 
     // cache the result
-    file_put_contents(FILENAME, $json, LOCK_EX);
-}
+    file_put_contents(FILENAME, $file_json, LOCK_EX);
 
-// return response
-header('Content-Type: application/json');
-echo $json;
+    // return response
+    header('Content-Type: application/json');
+    echo $api_json;
+}
+else {
+    // return response
+    header('Content-Type: application/json');
+    echo $json;
+}
 
 exit;
