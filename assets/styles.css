@@ -9,7 +9,11 @@ body {
 }
 
 #where {
+    align-items: center;
     bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     left: 2vh;
     position: absolute;
     right: 2vh;
@@ -21,9 +25,13 @@ h1, p {
     text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
 a {
     color: white;
-    opacity: 0.8;
+    opacity: 0.75;
     text-decoration: none;
 }
     a:hover {
@@ -75,6 +83,10 @@ button {
        margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
     }
 
+#webgl {
+    opacity: 0.75;
+}
+
 #webgl-trademark {
     bottom: 2vh;
     position: absolute;
@@ -84,6 +96,6 @@ button {
 .webgl-error {
     color: white;
     font-family: monospace;
-    margin: 50px;
+    margin: 200px 50px 0;
     text-align: center;
 }
