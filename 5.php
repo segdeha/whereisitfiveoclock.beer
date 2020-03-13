@@ -78,7 +78,9 @@ if ($curl) {
     mysql_close();
 
     // construct JSON that reflects the cities
-    $minutes_until_next_expiry = 30 - date('i'); // 30 minutes because india
+    $minutes = date('i');
+    // bust server cache every 30 minutes because india
+    $minutes_until_next_expiry = $minutes < 31 ? 30 - $minutes : 60 - $minutes;
     $seconds_until_next_expiry = $minutes_until_next_expiry * 60;
 
     $api_response = array(

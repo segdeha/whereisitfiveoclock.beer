@@ -4,6 +4,9 @@
  * Email me at: andrew@hedges.name
  */
 
+// check for logging parameter
+const show_logs = window.location.search === '?show_logs=1'
+
 let TYPING_SPEED_FAST = 'fast'
 let LOADING_TIMEOUT = undefined
 
@@ -96,7 +99,7 @@ async function getCities() {
         data = JSON.parse(cache)
 
         // log whether this was a cache hit
-        console.log('source', data.source)
+        show_logs && console.log('source', data.source)
 
         expired = data.expiry * 1000 < +new Date()
     }
@@ -105,11 +108,12 @@ async function getCities() {
     }
     // if the data hasn't expired, don't even go to the network
     if ('undefined' === typeof expired || true === expired) {
-        let response = await fetch(`/5.php`)
+        let buster = Math.floor(+new Date() / 60000) // new request to origin every minute
+        let response = await fetch(`/5.php?${buster}`)
         data = await response.json()
 
         // before we change it, log whether this was a cache hit
-        console.log('source', data.source)
+        show_logs && console.log('source', data.source)
 
         data.source = 'local cache'
         window.localStorage.setItem('cache', JSON.stringify(data))
