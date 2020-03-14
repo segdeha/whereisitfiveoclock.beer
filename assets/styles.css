@@ -75,10 +75,13 @@ button {
 
 #credits {
     bottom: 2vh;
+    cursor: pointer;
+    font-size: 85%;
     left: 2vh;
     position: absolute;
 }
     #credits p {
+        cursor: default;
        margin: 0;
        margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
     }
