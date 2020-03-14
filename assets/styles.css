@@ -78,12 +78,16 @@ button {
     cursor: pointer;
     font-size: 85%;
     left: 2vh;
+    opacity: 0.75;
     position: absolute;
 }
+    #credits:hover, #credits[open] {
+        opacity: 1;
+    }
     #credits p {
         cursor: default;
-       margin: 0;
-       margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
+        margin: 0;
+        margin-left: 1.06em; /* match the width of the caret + margin-right in Safari */
     }
 
 #webgl {
