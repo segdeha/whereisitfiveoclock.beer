@@ -78,22 +78,35 @@ if ($curl) {
     mysql_close();
 
     // construct JSON that reflects the cities
-    $minutes = date('i');
+
     // bust server cache every 30 minutes because india
-    $minutes_until_next_expiry = $minutes < 31 ? 30 - $minutes : 60 - $minutes;
-    $seconds_until_next_expiry = $minutes_until_next_expiry * 60;
+    $hour = date('H');
+    $minutes = date('i');
+    if ($minutes > 29) {
+        $hour += 1;
+        $minutes = '00';
+    }
+    else {
+        $minutes = 30;
+    }
+    $seconds = '00';
+    $month = date('n');
+    $day = date('j');
+    $year = date('Y');
+
+    $expiry = mktime($hour, $minutes, $seconds, $month, $day, $year);
 
     $api_response = array(
         'status' => 'success',
         'source' => 'api',
-        'expiry' => time() + $seconds_until_next_expiry,
+        'expiry' => $expiry,
         'cities' => $cities,
     );
 
     $file_response = array(
         'status' => 'success',
         'source' => 'server cache',
-        'expiry' => time() + $seconds_until_next_expiry,
+        'expiry' => $expiry,
         'cities' => $cities,
     );
 
