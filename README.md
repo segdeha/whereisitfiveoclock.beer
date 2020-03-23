@@ -14,7 +14,7 @@ I then loop through the results and pull out each time zone (`America/Los_Angele
 
 Next, I query a simple database consisting of 2 tables, one containing 24,297 cities with their associated time zones, the other that’s used to look up country names from country codes, the data for both coming from [geonames.org](http://download.geonames.org/export/dump/).
 
-Finally, I cache the JSON response I send back to the browser so it’s regenerated at most once per hour.
+Finally, I cache the JSON response I send back to the browser so it’s regenerated at most once every half hour.
 
 Super simple, but it works! ¯\\\_(ツ)_/¯
 
